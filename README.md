@@ -8,6 +8,8 @@
 [Github Oauth Documents](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)  
 [注册Github oauth App](https://github.com/settings/applications/new)  
 [OKHTTP](https://square.github.io/okhttp/)  
+[Spring-boot-mybatis](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)  
+ 
 ## 工具
 [Git](https://git-scm.com/download)
 [Visval Paradigm](https://www.visual-paradigm.com)
@@ -16,3 +18,20 @@
 ## Spring Boot 注解
 @Component  初始化到Spring中，用@AutoWired注入，无需new  
 @Value  用于获取Application.properties 中的配置 @Value("${key}")  
+
+
+## 脚本
+```sql
+create table user
+(
+	ID int auto_increment primary key,
+	account_id varchar(100) null,
+	name varchar(50) null,
+	token char(36) null,
+	gmt_create bigint null,
+	gmt_modified bigint null
+);
+
+
+
+```
