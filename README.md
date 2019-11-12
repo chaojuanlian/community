@@ -14,6 +14,7 @@
 [Git](https://git-scm.com/download)  
 [Visval Paradigm](https://www.visual-paradigm.com)  
 [flyway](https://flywaydb.org/)  
+[lombok](https://projectlombok.org/)
 ## Spring Boot 注解
 @Component  初始化到Spring中，用@AutoWired注入，无需new  
 @Value  用于获取Application.properties 中的配置 @Value("${key}")  
