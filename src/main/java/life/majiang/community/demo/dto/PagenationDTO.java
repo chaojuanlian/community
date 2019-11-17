@@ -16,7 +16,7 @@ public class PagenationDTO {
     private Integer page;            //当前页
     private Integer totalPage;       //总页数
 
-    private List<Integer> pages = new ArrayList<>();     //页数集合
+    private List<Integer> pages = new ArrayList<>();     //页面页数集合
 
     public void setePagenation(Integer totalCount, Integer page, Integer size) {
         if (totalCount % size == 0) {
