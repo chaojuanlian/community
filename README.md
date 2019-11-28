@@ -11,7 +11,7 @@
 [Spring-boot-mybatis](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)  
 [Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
 [spring-mvc](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#spring-web)  
-  
+[mabatis-generator](http://mybatis.org/generator/)  
 
 ## 工具
 [Git](https://git-scm.com/download)  
@@ -33,5 +33,8 @@
 
 ```  
 
-## 命令
+```bash
 mvn flyway:migrate  
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+
+```
