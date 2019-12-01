@@ -4,6 +4,7 @@ import life.majiang.community.demo.dto.PagenationDTO;
 import life.majiang.community.demo.dto.QuestionDTO;
 import life.majiang.community.demo.exception.CustomizeErrorCode;
 import life.majiang.community.demo.exception.CustomizeException;
+import life.majiang.community.demo.mapper.QuestionExtMapper;
 import life.majiang.community.demo.mapper.QuestionMapper;
 import life.majiang.community.demo.mapper.UserMapper;
 import life.majiang.community.demo.model.Question;
@@ -24,6 +25,9 @@ public class QuestionService {
 
     @Autowired
     private QuestionMapper questionMapper;
+
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
 
     public PagenationDTO list(Integer page, Integer size) {
         PagenationDTO pagenationDTO = new PagenationDTO();
@@ -137,5 +141,12 @@ public class QuestionService {
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
         }
+    }
+
+    public void incView(Integer id) {
+        Question question = new Question();
+        question.setViewCount(1);
+        question.setId(id);
+        questionExtMapper.invCount(question);
     }
 }
