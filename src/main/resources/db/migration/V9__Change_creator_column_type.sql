@@ -1,0 +1,2 @@
+ALTER TABLE question MODIFY creator BIGINT;
+ALTER TABLE comment MODIFY commentator BIGINT NOT NULL;
