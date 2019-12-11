@@ -1,19 +1,25 @@
 package life.majiang.community.demo.dto;
 
-import com.sun.org.apache.xml.internal.security.keys.keyresolver.implementations.PrivateKeyResolver;
+import life.majiang.community.demo.model.User;
 import lombok.Data;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @program: CommentDTO
- * @description: 问题回复业务模型
+ * @description: 服务于数据库传递参数
  * @author: WangYuChao
- * @create: 2019/12/1 22:35
+ * @create: 2019/12/11 19:37
  */
 @Data
 public class CommentDTO {
+    private Long id;
     private Long parentId;
-    private String content;
     private Integer type;
+    private Long commentator;
+    private Long gmtCreate;
+    private Long gmtModified;
+    private Long likeCount;
+    private String content;
+    private User user;
 }

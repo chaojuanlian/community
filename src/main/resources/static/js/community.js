@@ -1,6 +1,11 @@
 function post() {
     var questionId = $("#question-id").val();
-    var comtent = $("#question-content").val();
+    var content = $("#question-content").val();
+
+    if (!content){
+        alert("不能回复空内容~~~");
+        return;
+    }
     $.ajax({
         type: "POST",
         url: "/comment",
@@ -8,12 +13,12 @@ function post() {
         dataType: "json",
         data: JSON.stringify({
             "parentId":questionId,
-            "content":comtent,
+            "content":content,
             "type":1
         }),
         success: function (response) {
             if(response.code == 200){
-                $("#comment-section").hide();
+                window.location.reload();
             }else {
                 if (response.code == 2003){
                     var isAccepted = confirm(response.message);
