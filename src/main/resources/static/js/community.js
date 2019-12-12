@@ -67,21 +67,21 @@ function collapseComments(e){
         e.classList.remove("active");
     }else{
         $.getJSON("/comment/"+id,function(data){
-            handleList(data.data);
-
-
-
-        // 展开二级评论
-        comments.addClass("in");
-        //标记二级评论展开状态
-        e.setAttribute("data-collapse","in");
-        e.classList.add("active");
+            var parentDiv = $("#comment-"+id);
+            if (parentDiv.children().length == 1){
+                handleList(data.data,parentDiv);
+            }
+            // 展开二级评论
+            comments.addClass("in");
+            //标记二级评论展开状态
+            e.setAttribute("data-collapse","in");
+            e.classList.add("active");
 
         });
     }
 }
 
-function handleList(data){
+function handleList(data,childDiv){
     var html = '';
     $.map(data,function(item,index){
         html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comments">'
@@ -91,41 +91,8 @@ function handleList(data){
             + '<span>' + item.user.name+ '</span></h5>'
             + '<div>' + item.content + '</div>'
             + '<div class="menu"><span class="pull-right"'
-            + '>' + dateFormat(item.gmtCreate)  + '</span>'
+            + '>' + moment(item.gmtCreate).format('YYYY-MM-DD')  + '</span>'
             + '</div></div></div></div></div>';
     });
-    $('.two-comment').prepend(html);
-}
-
-/*
- * 时间格式化工具
- * 把Long类型的1527672756454日期还原yyyy-MM-dd格式日期
- */
-function dateFormat(longTypeDate){
-    var dateTypeDate = "";
-    var date = new Date();
-    date.setTime(longTypeDate);
-    dateTypeDate += date.getFullYear();   //年
-    dateTypeDate += "-" + getMonth(date); //月
-    dateTypeDate += "-" + getDay(date);   //日
-    return dateTypeDate;
-}
-
-//返回 01-12 的月份值
-function getMonth(date){
-    var month = "";
-    month = date.getMonth() + 1; //getMonth()得到的月份是0-11
-    if(month<10){
-        month = "0" + month;
-    }
-    return month;
-}
-//返回01-30的日期
-function getDay(date){
-    var day = "";
-    day = date.getDate();
-    if(day<10){
-        day = "0" + day;
-    }
-    return day;
+    childDiv.prepend(html);
 }

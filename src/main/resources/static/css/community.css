@@ -64,6 +64,7 @@ body {
     margin-right: 6px;
     font-size: 15px;
     cursor: pointer;
+    vertical-align: -2px;
 }
 
 .menu .active {
