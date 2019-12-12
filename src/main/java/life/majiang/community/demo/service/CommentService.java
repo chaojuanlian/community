@@ -49,7 +49,7 @@ public class CommentService {
             throw new CustomizeException(CustomizeErrorCode.TYPE_PARAM_WRONG);
         }
 
-        if(comment.getType() == CommentTypeEnum.COMMENT.getType()){
+        if(comment.getType().equals(CommentTypeEnum.COMMENT.getType())){
             // 回复评论
             Comment dbComment = commentMapper.selectByPrimaryKey(comment.getParentId());
             if (dbComment == null) {
