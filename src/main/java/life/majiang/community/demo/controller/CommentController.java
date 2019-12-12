@@ -1,7 +1,9 @@
 package life.majiang.community.demo.controller;
 
 import life.majiang.community.demo.dto.CommentCreateDTO;
+import life.majiang.community.demo.dto.CommentDTO;
 import life.majiang.community.demo.dto.ResultDTO;
+import life.majiang.community.demo.enums.CommentTypeEnum;
 import life.majiang.community.demo.exception.CustomizeErrorCode;
 import life.majiang.community.demo.model.Comment;
 import life.majiang.community.demo.model.User;
@@ -9,12 +11,10 @@ import life.majiang.community.demo.service.CommentService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -52,5 +52,12 @@ public class CommentController {
         comment.setCommentator(user.getId());
         commentService.insert(comment);
         return ResultDTO.okOf();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/comment/{id}",method = RequestMethod.GET)
+    public ResultDTO<List<CommentDTO>> comments(@PathVariable(name = "id") Long id){
+        List<CommentDTO> commentDTOS = commentService.listByTargetId(id, CommentTypeEnum.COMMENT);
+        return ResultDTO.okOf(commentDTOS);
     }
 }

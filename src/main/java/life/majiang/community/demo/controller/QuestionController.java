@@ -1,8 +1,8 @@
 package life.majiang.community.demo.controller;
 
-import life.majiang.community.demo.dto.CommentCreateDTO;
 import life.majiang.community.demo.dto.CommentDTO;
 import life.majiang.community.demo.dto.QuestionDTO;
+import life.majiang.community.demo.enums.CommentTypeEnum;
 import life.majiang.community.demo.service.CommentService;
 import life.majiang.community.demo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class QuestionController {
     public String question(@PathVariable(name = "id") Long id,
                            Model model){
         QuestionDTO questionDTO = questionService.getById(id);
-        List<CommentDTO> comments = commentService.listByQuestionId(id);
+        List<CommentDTO> comments = commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
         questionService.incView(id);
         model.addAttribute("question",questionDTO);
         model.addAttribute("comments",comments);
