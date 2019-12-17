@@ -96,3 +96,23 @@ function handleList(data,childDiv){
     });
     childDiv.prepend(html);
 }
+function selectTag(e) {
+    var value = e.getAttribute("data-tag");
+    var provious = $("#tag").val();
+
+    if (provious.indexOf(value) == -1) {
+        if (provious) {
+            $("#tag").val(provious + ',' + value);
+        } else {
+            $("#tag").val(value);
+        }
+    }
+}
+
+function showSelectTag() {
+    $("#select-tag").show();
+}
+
+function hideSelectTag() {
+    $("#select-tag").hide();
+}
