@@ -1,8 +1,8 @@
 package life.majiang.community.demo.controller;
 
 import life.majiang.community.demo.dto.PagenationDTO;
-import life.majiang.community.demo.mapper.UserMapper;
 import life.majiang.community.demo.model.User;
+import life.majiang.community.demo.service.NotificationService;
 import life.majiang.community.demo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ProfileController {
     @Autowired
-    private UserMapper userMapper;
-    @Autowired
     private QuestionService questionService;
+    @Autowired
+    private NotificationService notificationService;
 
     @GetMapping("/profile/{action}")
     public String profile(HttpServletRequest request,
@@ -34,13 +34,17 @@ public class ProfileController {
         if("questions".equals(action)){
             model.addAttribute("section","questions");
             model.addAttribute("sectionName","我的提问");
+            PagenationDTO pagenationDTO = questionService.list(user.getId(), page, size);
+            model.addAttribute("pagenation", pagenationDTO);
         }else if("replies".equals(action)){
+            PagenationDTO pagenationDTO = notificationService.list(user.getId(), page, size);
+            model.addAttribute("pagenation", pagenationDTO);
             model.addAttribute("section","replies");
             model.addAttribute("sectionName","最新回复");
+
         }
 
-        PagenationDTO pagenationDTO = questionService.list(user.getId(), page, size);
-        model.addAttribute("pagenation", pagenationDTO);
+
         return "profile";
     }
 
