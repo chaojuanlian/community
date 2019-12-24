@@ -11,7 +11,9 @@
 [Spring-boot-mybatis](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)  
 [Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
 [spring-mvc](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#spring-web)  
-[mabatis-generator](http://mybatis.org/generator/)  
+[mabatis-generator](http://mybatis.org/generator/)    
+[Markdown 插件](https://pandao.github.io/editor.md/)  
+
 
 ## 工具
 [Git](https://git-scm.com/download)  
@@ -37,4 +39,11 @@
 mvn flyway:migrate  
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 
+```
+```备注
+markdown 使用图片上传功能需修改 image-dialog.js  
+javascript
+    var body = (uploadIframe.contentWindow ? uploadIframe.contentWindow : uploadIframe.contentDocument).document.body;
+    var jsonContainer = body.getElementsByTagName("pre")[0];
+    var json = (jsonContainer.innerText) ? jsonContainer.innerText : ( (jsonContainer.textContent) ? jsonContainer.textContent : null);
 ```
