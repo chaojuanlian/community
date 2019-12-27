@@ -33,4 +33,24 @@
   <select id="selectRelated" parameterType="life.majiang.community.demo.model.Question" resultMap="BaseResultMap">
     select * from question WHERE id != #{id} and tag regexp #{tag}
   </select>
+
+  <select id="countBySearch" parameterType="life.majiang.community.demo.dto.QuestionQueryDTO" resultType="java.lang.Integer">
+    select count(*) from question
+    <where>
+      <if test="search != null">
+        title regexp #{search}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectBySearch" parameterType="life.majiang.community.demo.dto.QuestionQueryDTO" resultMap="BaseResultMap">
+    select * from question
+    <where>
+      <if test="search != null">
+        title regexp #{search}
+      </if>
+    </where>
+    ORDER BY gmt_create desc
+    limit #{page},#{size}
+  </select>
 </mapper>

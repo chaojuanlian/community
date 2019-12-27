@@ -2,6 +2,7 @@ package life.majiang.community.demo.service;
 
 import life.majiang.community.demo.dto.PagenationDTO;
 import life.majiang.community.demo.dto.QuestionDTO;
+import life.majiang.community.demo.dto.QuestionQueryDTO;
 import life.majiang.community.demo.exception.CustomizeErrorCode;
 import life.majiang.community.demo.exception.CustomizeException;
 import life.majiang.community.demo.mapper.QuestionExtMapper;
@@ -32,9 +33,22 @@ public class QuestionService {
     @Autowired
     private QuestionExtMapper questionExtMapper;
 
-    public PagenationDTO list(Integer page, Integer size) {
+    public PagenationDTO list(String search, Integer page, Integer size) {
+        if (StringUtils.isNotBlank(search)) {
+            String[] tags = search.split(" ");
+            search = Arrays.stream(tags).collect(Collectors.joining("|"));
+        }else {
+            search = null;
+        }
+
+
         PagenationDTO pagenationDTO = new PagenationDTO();
-        Integer totalCount = (int) questionMapper.countByExample(new QuestionExample());
+        QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
+        questionQueryDTO.setSearch(search);
+        Integer totalCount = questionExtMapper.countBySearch(questionQueryDTO);
+        if (totalCount == 0) {
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         Integer totalPage;
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
@@ -48,15 +62,14 @@ public class QuestionService {
         if(page > totalPage){
             page = totalPage;
         }
-
         pagenationDTO.setePagenation(totalPage,page);
 
 
         //5*i-1  size * (page-1)
         Integer offset = size * (page - 1);
-        QuestionExample questionExample = new QuestionExample();
-        questionExample.setOrderByClause("gmt_create desc");
-        List<Question> questions = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
+        questionQueryDTO.setPage(offset);
+        questionQueryDTO.setSize(size);
+        List<Question> questions = questionExtMapper.selectBySearch(questionQueryDTO);
 
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 

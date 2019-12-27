@@ -1,5 +1,6 @@
 package life.majiang.community.demo.mapper;
 
+import life.majiang.community.demo.dto.QuestionQueryDTO;
 import life.majiang.community.demo.model.Question;
 import life.majiang.community.demo.model.QuestionExample;
 import org.apache.ibatis.annotations.Param;
@@ -17,4 +18,7 @@ public interface QuestionExtMapper {
     int invCount(Question record);
     int invCoummentCount(Question record);
     List<Question> selectRelated(Question record);
+    Integer countBySearch(QuestionQueryDTO questionQueryDTO);
+
+    List<Question> selectBySearch(QuestionQueryDTO questionQueryDTO);
 }
