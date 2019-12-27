@@ -1,0 +1,20 @@
+2019-12-27 20:25:43.243  INFO 5380 --- [restartedMain] l.m.community.demo.CommunityApplication  : Starting CommunityApplication on PC-20170701CHCE with PID 5380 (started by Administrator in F:\王宇超\学习\Git\Code\community)
+2019-12-27 20:25:43.270  INFO 5380 --- [restartedMain] l.m.community.demo.CommunityApplication  : No active profile set, falling back to default profiles: default
+2019-12-27 20:25:44.054  WARN 5380 --- [restartedMain] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2019-12-27 20:25:44.215  INFO 5380 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2019-12-27 20:25:44.217  INFO 5380 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-27 20:25:44.217  INFO 5380 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-27 20:25:44.280  INFO 5380 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-27 20:25:44.280  INFO 5380 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1004 ms
+2019-12-27 20:25:44.309  INFO 5380 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2019-12-27 20:25:44.339  INFO 5380 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2019-12-27 20:25:44.340  INFO 5380 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1:3306/community?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8'
+2019-12-27 20:25:44.678  INFO 5380 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-27 20:25:44.705  INFO 5380 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-12-27 20:25:45.084  INFO 5380 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-12-27 20:25:45.112  INFO 5380 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2019-12-27 20:25:45.113  INFO 5380 --- [restartedMain] l.m.community.demo.CommunityApplication  : Started CommunityApplication in 2.055 seconds (JVM running for 613.983)
+2019-12-27 20:25:45.116  INFO 5380 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-12-27 20:25:47.072  INFO 5380 --- [Thread-46] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-27 20:25:47.075  INFO 5380 --- [Thread-46] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2019-12-27 20:25:47.096  INFO 5380 --- [Thread-46] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
