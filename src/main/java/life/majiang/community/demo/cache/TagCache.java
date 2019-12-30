@@ -37,7 +37,7 @@ public class TagCache {
 
         TagDTO move = new TagDTO();
         move.setCatagoryName("移动端");
-        move.setTags(Arrays.asList("java","android","ios","objective-c","小程序","swift","react-native","xcode","android-studio","webapp","flutter","kotlin"));
+        move.setTags(Arrays.asList("android","ios","objective-c","小程序","swift","react-native","xcode","android-studio","webapp","flutter","kotlin"));
         tagDTOs.add(move);
 
 

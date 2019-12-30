@@ -17,11 +17,10 @@ import java.util.*;
 @Component
 @Data
 public class HotTagCache {
-    private Map<String,Integer> tags = new HashMap<>();
     private List<String> hots = new ArrayList<>();
 
     public void updataTags(Map<String,Integer> tags){
-        int max = 3; // 默认热门标签最大数
+        int max = 5; // 默认热门标签最大数
         PriorityQueue<HotTagDTO> priorityQueue = new PriorityQueue<>(max);
 
         tags.forEach((name,priority)->{

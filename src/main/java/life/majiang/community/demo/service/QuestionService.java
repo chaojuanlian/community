@@ -33,18 +33,17 @@ public class QuestionService {
     @Autowired
     private QuestionExtMapper questionExtMapper;
 
-    public PagenationDTO list(String search, Integer page, Integer size) {
+    public PagenationDTO list(String search,String tag, Integer page, Integer size) {
         if (StringUtils.isNotBlank(search)) {
             String[] tags = search.split(" ");
             search = Arrays.stream(tags).collect(Collectors.joining("|"));
-        }else {
-            search = null;
         }
 
 
         PagenationDTO pagenationDTO = new PagenationDTO();
         QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
         questionQueryDTO.setSearch(search);
+        questionQueryDTO.setTag(tag);
         Integer totalCount = questionExtMapper.countBySearch(questionQueryDTO);
         if (totalCount == 0) {
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);

@@ -37,8 +37,11 @@
   <select id="countBySearch" parameterType="life.majiang.community.demo.dto.QuestionQueryDTO" resultType="java.lang.Integer">
     select count(*) from question
     <where>
-      <if test="search != null">
+      <if test="search != '' and search != null">
         title regexp #{search}
+      </if>
+      <if test="tag != '' and tag != null">
+        tag regexp #{tag}
       </if>
     </where>
   </select>
@@ -46,8 +49,11 @@
   <select id="selectBySearch" parameterType="life.majiang.community.demo.dto.QuestionQueryDTO" resultMap="BaseResultMap">
     select * from question
     <where>
-      <if test="search != null">
+      <if test="search != '' and search != null">
         title regexp #{search}
+      </if>
+      <if test="tag != '' and tag != null">
+        tag regexp #{tag}
       </if>
     </where>
     ORDER BY gmt_create desc
