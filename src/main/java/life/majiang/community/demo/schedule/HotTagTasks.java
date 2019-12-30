@@ -56,8 +56,8 @@ public class HotTagTasks {
             }
             offset += limit;
         }
-        hotTagCache.setTags(priorities);
-        hotTagCache.getTags().forEach(
+
+        priorities.forEach(
                 (k,v)->{
                     System.out.print(k);
                     System.out.print(":");
@@ -65,7 +65,7 @@ public class HotTagTasks {
                     System.out.println();
                 }
         );
-
+        hotTagCache.updataTags(priorities);
         log.info("The time is now {}", new Date());
     }
 }
