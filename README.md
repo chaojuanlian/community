@@ -29,6 +29,7 @@
 ## 脚本
 ``` 备注
 logging.level.life.majiang.community.demo.mapper=debug
+mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
  打印数据库执行日志 debug 级别
  
  logging.file.max-history=3
@@ -38,6 +39,9 @@ logging.level.life.majiang.community.demo.mapper=debug
  线上环境
  logging.file.max-size=200MB
  logging.file.max-history=30
+
+
+
 
 
 
